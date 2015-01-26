@@ -1,0 +1,26 @@
+/**
+ * Definition for binary tree
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+    vector<int> result;
+public:
+    vector<int> postorderTraversal(TreeNode *root) {
+        
+        post(root);
+        return result;
+    }
+    void post(TreeNode * root)
+    {
+        if(root==NULL)
+        return;
+        post(root->left);
+        post(root->right);
+        result.push_back(root->val);
+    }
+};
