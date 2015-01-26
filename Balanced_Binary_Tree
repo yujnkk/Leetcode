@@ -1,0 +1,15 @@
+class Solution {
+public:
+    bool isBalanced(TreeNode *root) {
+    	if(!root)
+    		return true;
+        if(abs(getheight(root->left) - getheight(root->right))>1)
+        	return false;
+        else 
+        	return  isBalanced(root->left)&&isBalanced(root->right);
+    }
+   int getheight(TreeNode* root){
+   if(root == NULL) return 0;
+   return max(getheight(root->left), getheight(root->right))+1;
+    }   
+};
